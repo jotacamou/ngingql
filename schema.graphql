@@ -1,0 +1,21 @@
+type Place {
+    id: String!
+    name: String!
+    zipcode: String!
+    country: String!
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String
+    password: String
+}
+
+type Query {
+    allPlaces: [Place]
+}
+
+schema {
+    query: Query
+}
