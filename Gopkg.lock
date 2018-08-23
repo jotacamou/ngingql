@@ -3,6 +3,7 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:cbfdf9c2913efa9b6357c47f281e19e90425e454244cdb9d784331793f3315c1"
   name = "github.com/graph-gophers/graphql-go"
   packages = [
     ".",
@@ -18,50 +19,79 @@
     "introspection",
     "log",
     "relay",
-    "trace"
+    "trace",
   ]
+  pruneopts = "UT"
   revision = "94da0f0031f9d30a1d56cd4b56e40852516c3301"
 
 [[projects]]
   branch = "master"
+  digest = "1:9bc356c09c1984257e981cdabb4ac100308018b8a47193d7f3fe99a59a002ed4"
+  name = "github.com/jotacamou/ngingql"
+  packages = [
+    "db",
+    "resolver",
+  ]
+  pruneopts = "UT"
+  revision = "5cf7cb50292e2bfb894c91cd1b2207deea3e15fa"
+
+[[projects]]
+  branch = "master"
+  digest = "1:e7e7df4fe4a919051139317ec760b8ba56637ccd3cf731eacbdd36903c89a0e8"
   name = "github.com/lib/pq"
   packages = [
     ".",
-    "oid"
+    "oid",
   ]
+  pruneopts = "UT"
   revision = "55f6f2718ccb74a33366eb78dac69fa02124b91f"
 
 [[projects]]
+  digest = "1:15022cc6a0a3ac52b319b0b2230a7017747adbf072df0c8f555e9c1f286bf257"
   name = "github.com/mattes/migrate"
   packages = [
     ".",
     "database",
     "database/postgres",
     "source",
-    "source/file"
+    "source/file",
   ]
+  pruneopts = "UT"
   revision = "035c07716cd373d88456ec4d701402df52584cb4"
   version = "v3.0.1"
 
 [[projects]]
+  digest = "1:450b7623b185031f3a456801155c8320209f75d0d4c4e633c6b1e59d44d6e392"
   name = "github.com/opentracing/opentracing-go"
   packages = [
     ".",
     "ext",
-    "log"
+    "log",
   ]
+  pruneopts = "UT"
   revision = "1949ddbfd147afd4d964a9f00b24eb291e0e7c38"
   version = "v1.0.2"
 
 [[projects]]
   branch = "master"
+  digest = "1:76ee51c3f468493aff39dbacc401e8831fbb765104cbf613b89bef01cf4bad70"
   name = "golang.org/x/net"
   packages = ["context"]
+  pruneopts = "UT"
   revision = "922f4815f713f213882e8ef45e0d315b164d705c"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "70a758a4eee6c26b1c31ade2da1d670929d8cea52f398d621cfc29f66836f80e"
+  input-imports = [
+    "github.com/graph-gophers/graphql-go",
+    "github.com/graph-gophers/graphql-go/relay",
+    "github.com/jotacamou/ngingql/db",
+    "github.com/jotacamou/ngingql/resolver",
+    "github.com/lib/pq",
+    "github.com/mattes/migrate",
+    "github.com/mattes/migrate/database/postgres",
+    "github.com/mattes/migrate/source/file",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
