@@ -1,8 +1,8 @@
 type Place {
     id: String!
     name: String!
-    zipcode: String!
     country: String!
+    zipcode: String!
 }
 
 type User {
