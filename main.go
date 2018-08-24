@@ -4,7 +4,10 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 	_ "github.com/jotacamou/ngingql/db"
 	"github.com/jotacamou/ngingql/resolver"
 
@@ -27,18 +30,22 @@ func init() {
 }
 
 func main() {
-	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	r := mux.NewRouter()
+
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write(page)
-	}))
+	})
 
-	http.Handle("/query", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		next := &relay.Handler{Schema: schema}
+	r.HandleFunc("/graphql", func(w http.ResponseWriter, r *http.Request) {
+		gql := &relay.Handler{Schema: schema}
 		ctx := context.Background()
-		next.ServeHTTP(w, r.WithContext(ctx))
-	}))
+		gql.ServeHTTP(w, r.WithContext(ctx))
+	})
 
-	log.Println("server is running on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	routeLogger := handlers.LoggingHandler(os.Stdout, r)
+
+	log.Println("Server is running on port 8080")
+	log.Fatal(http.ListenAndServe(":8080", routeLogger))
 
 }
 
@@ -56,7 +63,7 @@ var page = []byte(`
 		<div id="graphiql" style="height: 100vh;">Loading...</div>
 		<script>
 			function graphQLFetcher(graphQLParams) {
-				return fetch("/query", {
+				return fetch("/graphql", {
 					method: "post",
 					headers: {
 						'Accept': 'application/json',
