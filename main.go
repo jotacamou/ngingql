@@ -1,15 +1,14 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net/http"
 
 	_ "github.com/jotacamou/ngingql/db"
 	"github.com/jotacamou/ngingql/resolver"
 
-	"context"
 	"io/ioutil"
-	"strings"
 
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
@@ -24,11 +23,9 @@ func init() {
 	}
 
 	schema = graphql.MustParseSchema(string(schemaFile), &resolver.Resolver{})
-	if schema == nil {
-		log.Fatal("schema equals nil")
-	}
 
 }
+
 func main() {
 	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Write(page)
@@ -36,9 +33,7 @@ func main() {
 
 	http.Handle("/query", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		next := &relay.Handler{Schema: schema}
-		authorization := r.Header.Get("Authorization")
-		token := strings.Replace(authorization, "Bearer ", "", 1)
-		ctx := context.WithValue(r.Context(), "AuthorizationToken", token)
+		ctx := context.Background()
 		next.ServeHTTP(w, r.WithContext(ctx))
 	}))
 
