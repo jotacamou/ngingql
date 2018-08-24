@@ -3,7 +3,7 @@ package db
 import (
 	"log"
 
-	_ "github.com/lib/pq"
+	"github.com/lib/pq"
 	_ "github.com/mattes/migrate/source/file"
 )
 
@@ -14,12 +14,12 @@ type Activity struct {
 	Owner            string
 	Price            float64
 	Fee              float64
-	MainPicture      []string
-	SlideshowPicture []string
+	MainPicture      pq.StringArray
+	SlideshowPicture pq.StringArray
 	Duration         string
 	PlaceID          int32
-	Hour             []string
-	Tag              []string
+	Hour             pq.StringArray
+	Tag              pq.StringArray
 }
 
 func AllActivities(wrapper func(activity *Activity)) {
