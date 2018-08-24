@@ -8,7 +8,7 @@ import (
 )
 
 type Place struct {
-	ID      string
+	ID      int32
 	Name    string
 	Zipcode string
 	Country string

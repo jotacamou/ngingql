@@ -22,7 +22,7 @@ func (r *Resolver) AllPlaces(ctx context.Context) *[]*placeResolver {
 	return &p
 }
 
-func (r *placeResolver) ID() string {
+func (r *placeResolver) ID() int32 {
 	return r.p.ID
 }
 

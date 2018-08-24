@@ -1,5 +1,5 @@
 type Place {
-    id: String!
+    id: Int!
     name: String!
     country: String!
     zipcode: String!
