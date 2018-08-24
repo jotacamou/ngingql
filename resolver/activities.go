@@ -10,7 +10,7 @@ type activityResolver struct {
 	p *db.Activity
 }
 
-func (r *Resolver) AllPlaces(ctx context.Context) *[]*activityResolver {
+func (r *Resolver) AllActivities(ctx context.Context) *[]*activityResolver {
 	var p []*activityResolver
 
 	wrapper := func(activity *db.Activity) {
@@ -43,7 +43,7 @@ func (r *activityResolver) Price() float32 {
 }
 
 func (r *activityResolver) Fee() float32 {
-	return r.p.Feee
+	return r.p.Fee
 }
 
 func (r *activityResolver) MainPicture() []string {

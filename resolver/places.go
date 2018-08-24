@@ -10,6 +10,7 @@ type placeResolver struct {
 	p *db.Place
 }
 
+// AllPlaces returns all queried values of all Place structs
 func (r *Resolver) AllPlaces(ctx context.Context) *[]*placeResolver {
 	var p []*placeResolver
 
