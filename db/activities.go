@@ -12,8 +12,8 @@ type Activity struct {
 	Title            string
 	Description      string
 	Owner            string
-	Price            float32
-	Fee              float32
+	Price            float64
+	Fee              float64
 	MainPicture      []string
 	SlideshowPicture []string
 	Duration         string
@@ -23,7 +23,7 @@ type Activity struct {
 }
 
 func AllActivities(wrapper func(activity *Activity)) {
-	res, err := db.Query("SELECT id ,title ,description ,owner ,price ,fee ,main_picture ,slideshow_picture ,duration ,place_id ,hour ,tag FROM activities")
+	res, err := db.Query("SELECT id, title, description, owner, price, fee, main_picture, slideshow_picture, duration, place_id, hour, tag FROM activities")
 	if err != nil {
 		log.Println("error fetching all activities:", err)
 	}

@@ -6,23 +6,23 @@ type Place {
 }
 
 type Activity {
-	id: Int!
-	title: String!
-	description: String
-	owner: String
-	price: Float
-	fee: Float
-	main_picture: [String]
-	slideshow_picture: [String]
-	duration: String
-	place_id: Int
-	hour: [String]
-	tag: [String]
+    id: Int!
+    title: String!
+    description: String!
+    owner: String!
+    price: Float!
+    fee: Float!
+    mainpicture: [String!]!
+    slideshowpicture: [String!]!
+    duration: String!
+    placeid: Int!
+    hour: [String!]!
+    tag: [String!]!
 }
 
 type Query {
     allPlaces: [Place]
-    allActivities: [Activity]
+    allActivities: [Activity!]
 }
 
 schema {

@@ -38,11 +38,11 @@ func (r *activityResolver) Owner() string {
 	return r.p.Owner
 }
 
-func (r *activityResolver) Price() float32 {
+func (r *activityResolver) Price() float64 {
 	return r.p.Price
 }
 
-func (r *activityResolver) Fee() float32 {
+func (r *activityResolver) Fee() float64 {
 	return r.p.Fee
 }
 
