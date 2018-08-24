@@ -22,7 +22,7 @@ type Activity {
 
 type Query {
     allPlaces: [Place]
-    allActivities: [Activity!]
+    allActivities: [Activity]
 }
 
 schema {
